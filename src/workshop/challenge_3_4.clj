@@ -24,6 +24,14 @@
 
       ;; <<< BEGIN FILL ME IN PART 1 >>>
 
+      {:onyx/name :capitalize-names
+       :onyx/fn ::capitalize-names
+       :onyx/type :function
+       :onyx/batch-size batch-size
+       :onyx/batch-timeout batch-timeout
+       :onyx/batch-fn? true
+       :onyx/doc "Splits :sentence into :word segments"}
+
       ;; <<< END FILL ME IN PART 1 >>>
 
       {:onyx/name :write-segments
@@ -39,6 +47,9 @@
 
 ;; <<< BEGIN FILL ME IN PART 2 >>>
 
+(defn capitalize-names [ins]
+  (map #(update-in % [:name] clojure.string/capitalize)
+       ins))
 ;; <<< END FILL ME IN PART 2 >>>
 
 ;;; Lifecycles ;;;

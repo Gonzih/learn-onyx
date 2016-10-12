@@ -57,6 +57,19 @@
 
 ;; <<< BEGIN FILL ME IN >>>
 
+(defn upper-case [in]
+  (update-in in [:name] (memfn toUpperCase)))
+
+(defn interpose-pipe [in]
+  (update-in in [:name]
+             (fn [n]
+               (apply str (interpose "|" n)))))
+
+(defn interpose-space [in]
+  (update-in in [:name]
+             (fn [n]
+               (apply str (interpose " " n)))))
+
 ;; <<< END FILL ME IN >>>
 
 ;;; Lifecycles ;;;

@@ -81,6 +81,18 @@
 
 ;; <<< BEGIN FILL ME IN >>>
 
-(def flow-conditions)
+(defn catch-them-all [event old-segment exception all-new-segments]
+  (not (nil? exception)))
+
+(defn post-transform [event segment exception]
+  (assoc segment :error "Insufficient access level"))
+
+(def flow-conditions
+  [{:flow/from :process-user
+    :flow/to [:write-segments]
+    :flow/thrown-exception? true
+    :flow/short-circuit? true
+    :flow/post-transform ::post-transform
+    :flow/predicate ::catch-them-all}])
 
 ;; <<< END FILL ME IN >>>

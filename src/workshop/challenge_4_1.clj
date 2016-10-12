@@ -48,6 +48,12 @@
 
 ;; <<< BEGIN FILL ME IN FOR log-segments >>>
 
+;; Log when the task stops. Return no new values for the event map.
+(defn log-task [event lifecycle]
+  (send logger (fn [_] (doseq [{:keys [message]} (:onyx.core/batch event)]
+                         (println message))))
+  {})
+
 ;; <<< END FILL ME IN >>>
 
 (defn inject-reader-ch [event lifecycle]
@@ -64,10 +70,17 @@
 
 ;; <<< BEGIN FILL ME IN FOR logger-lifecycle calls >>>
 
+(def logger-lifecycle
+  {:lifecycle/after-batch log-task})
+
 ;; <<< END FILL ME IN >>>
 
 (defn build-lifecycles []
   [;; <<< BEGIN FILL ME IN FOR :times-three >>>
+
+   {:lifecycle/task :times-three
+    :lifecycle/calls ::logger-lifecycle
+    :onyx/doc "Logs messages about the task"}
 
    ;; <<< END FILL ME IN >>>
 

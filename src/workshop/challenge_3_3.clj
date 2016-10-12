@@ -23,6 +23,16 @@
 
       ;; <<< BEGIN FILL ME IN PART 1 >>>
 
+      {:onyx/name :transform-name
+       :onyx/fn ::transform-name
+       :onyx/type :function
+       :onyx/batch-size batch-size
+       :onyx/batch-timeout batch-timeout
+       ::prefix "~"
+       ::appendix "?"
+       :onyx/params [::prefix ::appendix]
+       :onyx/doc "Splits :sentence into :word segments"}
+
       ;; <<< END FILL ME IN PART 1 >>>
 
       {:onyx/name :write-segments
@@ -37,6 +47,9 @@
 ;;; Functions ;;;
 
 ;; <<< BEGIN FILL ME IN PART 2 >>>
+
+(defn transform-name [p a in]
+  (update-in in [:name] (fn [n] (str p n a))))
 
 ;; <<< END FILL ME IN  PART 2 >>>
 

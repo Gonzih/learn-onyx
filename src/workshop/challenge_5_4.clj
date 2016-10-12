@@ -93,6 +93,21 @@
 
 ;; <<< BEGIN FILL ME IN >>>
 
-(def flow-conditions)
+(defn child? [event old-segment new-segment all-new-segments]
+  (> 18 (:age new-segment)))
+
+(def adult? (complement child?))
+
+(def flow-conditions
+  [{:flow/from :identity
+    :flow/exclude-keys [:age]
+    :flow/to [:children]
+    :flow/predicate ::child?}
+   {:flow/from :identity
+    :flow/exclude-keys [:age]
+    :flow/to [:adults]
+    :flow/predicate ::adult?}
+   ])
+
 
 ;; <<< END FILL ME IN >>>

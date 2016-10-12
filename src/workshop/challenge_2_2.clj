@@ -24,6 +24,24 @@
 
       ;; <<< BEGIN FILL ME IN >>>
 
+      {:onyx/name :plus
+       :onyx/fn :workshop.challenge-2-2/plus
+       :onyx/type :function
+       :onyx/batch-size batch-size
+       :onyx/batch-timeout batch-timeout
+       :my/param 50
+       :onyx/params [:my/param]
+       :onyx/doc "Documentation is important"}
+
+      {:onyx/name :times
+       :onyx/fn :workshop.challenge-2-2/times
+       :onyx/type :function
+       :onyx/batch-size batch-size
+       :onyx/batch-timeout batch-timeout
+       :my/param 3
+       :onyx/params [:my/param]
+       :onyx/doc "Documentation is important"}
+
       ;; <<< END FILL ME IN >>>
 
       {:onyx/name :write-segments
